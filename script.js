@@ -390,6 +390,7 @@ function initializeDarkMode() {
 // Before/After Swiper
 const beforeAfterSwiper = new Swiper('.before-after-swiper', {
     loop: true,
+    autoHeight: true, // Adjust height automatically
     autoplay: {
         delay: 5000,
         disableOnInteraction: false,

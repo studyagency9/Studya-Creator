@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* --- Smooth Theme Transition --- */
+body, .bg-white, .bg-slate-50, .bg-slate-100, .bg-slate-200, .bg-slate-800, .bg-slate-900, .backdrop-blur-lg, input, textarea, select, button, a, h1, h2, h3, h4, p, span, div, section, header, nav {
+    transition-property: color, background-color, border-color, fill, stroke;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+}
+
 * {
     font-family: 'Inter', sans-serif;
 }
