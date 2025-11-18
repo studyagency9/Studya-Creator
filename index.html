@@ -1,0 +1,1096 @@
+<html lang="fr"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studya Creator — Créez vos visuels marketing en quelques clics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+    
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-lg border-b border-slate-200 z-40">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="text-xl lg:text-2xl font-semibold tracking-tighter text-slate-900">
+                        STUDYA<span class="text-violet-600">CREATOR</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#templates" class="text-base text-slate-600 hover:text-slate-900 transition-colors">Templates</a>
+                    <a href="#how-it-works" class="text-base text-slate-600 hover:text-slate-900 transition-colors">Fonctionnement</a>
+                    <a href="#pricing" class="text-base text-slate-600 hover:text-slate-900 transition-colors">Tarifs</a>
+                    <a href="#contact" class="text-base text-slate-600 hover:text-slate-900 transition-colors">Contact</a>
+
+                    <!-- Dark Mode Toggle -->
+                    <div class="ml-4">
+                        <button id="dark-mode-toggle" class="p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 transition-colors">
+                            <i data-lucide="moon" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- CTA Button Desktop -->
+                <div class="hidden lg:block">
+                    <button onclick="scrollToGenerator()" class="px-5 py-2.5 bg-violet-600 text-white text-base font-medium rounded-lg hover:bg-violet-700 transition-all hover:scale-105">
+                        Commencer gratuitement
+                    </button>
+                </div>
+                
+            </div>
+        </nav>
+        
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="pt-24 lg:pt-32 pb-16 lg:pb-24 bg-gradient-to-br from-slate-50 via-violet-50 to-cyan-50 hero-section-gradient">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Hero Content -->
+                <div class="text-center lg:text-left">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-900 mb-6">
+                        Créez des visuels<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-cyan-600">marketing percutants</span>
+                    </h1>
+                    <p class="text-lg lg:text-xl text-slate-600 mb-8 lg:mb-10 max-w-2xl mx-auto lg:mx-0">
+                        Des templates professionnels personnalisables en quelques clics. Parfait pour vos réseaux sociaux, formations et événements.
+                    </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button onclick="scrollToGenerator()" class="px-6 lg:px-8 py-3 lg:py-4 bg-violet-600 text-white text-base lg:text-lg font-medium rounded-lg hover:bg-violet-700 transition-all hover:scale-105 shadow-lg hover:shadow-xl">
+                            Créer un visuel
+                        </button>
+                        <button onclick="document.getElementById('templates').scrollIntoView({behavior: 'smooth'})" class="px-6 lg:px-8 py-3 lg:py-4 bg-white text-slate-900 text-base lg:text-lg font-medium rounded-lg hover:bg-slate-50 transition-all border border-slate-200">
+                            Voir les templates
+                        </button>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="mt-12 lg:mt-16 grid grid-cols-3 gap-6 lg:gap-8">
+                        <div>
+                            <div class="text-2xl lg:text-3xl font-semibold text-slate-900">50+</div>
+                            <div class="text-sm lg:text-base text-slate-600 mt-1">Templates</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl lg:text-3xl font-semibold text-slate-900">2</div>
+                            <div class="text-sm lg:text-base text-slate-600 mt-1">Crédits gratuits</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl lg:text-3xl font-semibold text-slate-900">5s</div>
+                            <div class="text-sm lg:text-base text-slate-600 mt-1">Génération</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hero Visual -->
+                <div class="relative">
+                    <div class="float-animation relative bg-white rounded-2xl shadow-2xl p-6 lg:p-8 border border-slate-200">
+                        <div class="aspect-square bg-gradient-to-br from-violet-100 to-cyan-100 rounded-xl mb-4 flex items-center justify-center">
+                            <i data-lucide="image" class="w-24 h-24 text-violet-400"></i>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="h-4 bg-slate-200 rounded w-3/4"></div>
+                            <div class="h-4 bg-slate-200 rounded w-1/2"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating badge -->
+                    <div class="absolute -top-4 -right-4 bg-violet-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                        Nouveau
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 lg:py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 lg:mb-20">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
+                    En seulement 3 étapes
+                </h2>
+                <p class="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto">
+                    Un processus simple et intuitif pour donner vie à vos idées, sans effort.
+                </p>
+            </div>
+
+            <!-- Steps Timeline -->
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Dotted line -->
+                <div class="absolute left-1/2 top-12 bottom-12 w-0.5 bg-slate-200/70 hidden md:block"></div>
+
+                <!-- Step 1 -->
+                <div class="step-card-container group">
+                    <div class="step-icon-wrapper">
+                        <div class="step-icon-background">
+                            <i data-lucide="layout-template" class="w-8 h-8 text-violet-600"></i>
+                        </div>
+                    </div>
+                    <div class="step-content-wrapper right">
+                        <div class="step-content">
+                            <p class="step-number">Étape 1</p>
+                            <h3 class="step-title">Choisissez un template</h3>
+                            <p class="step-description">Parcourez une collection de designs créés par des experts et trouvez celui qui correspond parfaitement à votre message.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-card-container group">
+                    <div class="step-icon-wrapper">
+                        <div class="step-icon-background">
+                            <i data-lucide="edit-3" class="w-8 h-8 text-violet-600"></i>
+                        </div>
+                    </div>
+                    <div class="step-content-wrapper left">
+                        <div class="step-content">
+                            <p class="step-number">Étape 2</p>
+                            <h3 class="step-title">Personnalisez en direct</h3>
+                            <p class="step-description">Ajustez les couleurs, les textes et importez votre logo. Visualisez chaque modification en temps réel pour un contrôle total.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-card-container group">
+                    <div class="step-icon-wrapper">
+                        <div class="step-icon-background">
+                            <i data-lucide="download" class="w-8 h-8 text-violet-600"></i>
+                        </div>
+                    </div>
+                    <div class="step-content-wrapper right">
+                        <div class="step-content">
+                            <p class="step-number">Étape 3</p>
+                            <h3 class="step-title">Téléchargez et partagez</h3>
+                            <p class="step-description">Générez votre visuel en haute définition et recevez un fichier prêt à être publié sur tous vos réseaux sociaux.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Before/After Section -->
+    <section id="before-after" class="py-16 lg:py-24 bg-slate-900 text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 lg:mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight mb-4">
+                    De l'idée au visuel parfait
+                </h2>
+                <p class="text-lg lg:text-xl text-slate-400 max-w-3xl mx-auto">
+                    Plus besoin de jongler avec des outils compliqués. Transformez vos concepts en créations professionnelles.
+                </p>
+            </div>
+
+            <!-- Swiper -->
+            <div class="swiper before-after-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                            <!-- Before -->
+                            <div class="text-center">
+                                <h3 class="text-2xl font-semibold mb-4 text-slate-300">Avant</h3>
+                                <div class="bg-slate-800 rounded-2xl p-6 aspect-square flex flex-col items-center justify-center border border-slate-700">
+                                    <div class="w-full max-w-xs space-y-4">
+                                        <div class="h-8 bg-slate-700 rounded w-3/4 mx-auto"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-full"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-5/6"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-1/2"></div>
+                                    </div>
+                                    <p class="mt-8 text-slate-500">Visuel basique, peu engageant</p>
+                                </div>
+                            </div>
+
+                            <!-- After -->
+                            <div class="text-center">
+                                <h3 class="text-2xl font-semibold mb-4 text-violet-400">Après</h3>
+                                <div class="bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl p-6 aspect-square flex flex-col items-center justify-center shadow-2xl shadow-violet-500/20">
+                                    <div class="w-full max-w-xs text-white">
+                                        <h4 class="text-2xl font-bold mb-3">Formation Pro</h4>
+                                        <p class="opacity-80">Développez vos compétences.</p>
+                                    </div>
+                                    <p class="mt-8 text-violet-200">Visuel impactant</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                            <!-- Before -->
+                            <div class="text-center">
+                                <h3 class="text-2xl font-semibold mb-4 text-slate-300">Avant</h3>
+                                <div class="bg-slate-800 rounded-2xl p-6 aspect-square flex flex-col items-center justify-center border border-slate-700">
+                                    <div class="w-full max-w-xs space-y-4">
+                                        <div class="h-8 bg-slate-700 rounded w-3/4 mx-auto"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-full"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-5/6"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-1/2"></div>
+                                    </div>
+                                    <p class="mt-8 text-slate-500">Texte simple sur fond uni</p>
+                                </div>
+                            </div>
+
+                            <!-- After -->
+                            <div class="text-center">
+                                <h3 class="text-2xl font-semibold mb-4 text-cyan-400">Après</h3>
+                                <div class="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl p-6 aspect-square flex flex-col items-center justify-center shadow-2xl shadow-cyan-500/20">
+                                    <div class="w-full max-w-xs text-white">
+                                        <h4 class="text-2xl font-bold mb-3">Webinaire Gratuit</h4>
+                                        <p class="opacity-80">Inscrivez-vous maintenant.</p>
+                                    </div>
+                                    <p class="mt-8 text-cyan-200">Design attractif et pro</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                            <!-- Before -->
+                            <div class="text-center">
+                                <h3 class="text-2xl font-semibold mb-4 text-slate-300">Avant</h3>
+                                <div class="bg-slate-800 rounded-2xl p-6 aspect-square flex flex-col items-center justify-center border border-slate-700">
+                                    <div class="w-full max-w-xs space-y-4">
+                                        <div class="h-8 bg-slate-700 rounded w-3/4 mx-auto"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-full"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-5/6"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-1/2"></div>
+                                    </div>
+                                    <p class="mt-8 text-slate-500">Information brute</p>
+                                </div>
+                            </div>
+
+                            <!-- After -->
+                            <div class="text-center">
+                                <h3 class="text-2xl font-semibold mb-4 text-emerald-400">Après</h3>
+                                <div class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl p-6 aspect-square flex flex-col items-center justify-center shadow-2xl shadow-emerald-500/20">
+                                    <div class="w-full max-w-xs text-white">
+                                        <h4 class="text-2xl font-bold mb-3">Nouveau Produit</h4>
+                                        <p class="opacity-80">Disponible dès maintenant.</p>
+                                    </div>
+                                    <p class="mt-8 text-emerald-200">Présentation soignée</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                            <!-- Before -->
+                            <div class="text-center">
+                                <h3 class="text-2xl font-semibold mb-4 text-slate-300">Avant</h3>
+                                <div class="bg-slate-800 rounded-2xl p-6 aspect-square flex flex-col items-center justify-center border border-slate-700">
+                                    <div class="w-full max-w-xs space-y-4">
+                                        <div class="h-8 bg-slate-700 rounded w-3/4 mx-auto"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-full"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-5/6"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-1/2"></div>
+                                    </div>
+                                    <p class="mt-8 text-slate-500">Annonce simple</p>
+                                </div>
+                            </div>
+
+                            <!-- After -->
+                            <div class="text-center">
+                                <h3 class="text-2xl font-semibold mb-4 text-rose-400">Après</h3>
+                                <div class="bg-gradient-to-br from-rose-500 to-pink-600 rounded-2xl p-6 aspect-square flex flex-col items-center justify-center shadow-2xl shadow-rose-500/20">
+                                    <div class="w-full max-w-xs text-white">
+                                        <h4 class="text-2xl font-bold mb-3">Promo Spéciale</h4>
+                                        <p class="opacity-80">-50% sur tout le site.</p>
+                                    </div>
+                                    <p class="mt-8 text-rose-200">Visuel qui convertit</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 5 -->
+                    <div class="swiper-slide">
+                        <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                            <!-- Before -->
+                            <div class="text-center">
+                                <h3 class="text-2xl font-semibold mb-4 text-slate-300">Avant</h3>
+                                <div class="bg-slate-800 rounded-2xl p-6 aspect-square flex flex-col items-center justify-center border border-slate-700">
+                                    <div class="w-full max-w-xs space-y-4">
+                                        <div class="h-8 bg-slate-700 rounded w-3/4 mx-auto"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-full"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-5/6"></div>
+                                        <div class="h-4 bg-slate-700 rounded w-1/2"></div>
+                                    </div>
+                                    <p class="mt-8 text-slate-500">Idée brute</p>
+                                </div>
+                            </div>
+
+                            <!-- After -->
+                            <div class="text-center">
+                                <h3 class="text-2xl font-semibold mb-4 text-amber-400">Après</h3>
+                                <div class="bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl p-6 aspect-square flex flex-col items-center justify-center shadow-2xl shadow-amber-500/20">
+                                    <div class="w-full max-w-xs text-white">
+                                        <h4 class="text-2xl font-bold mb-3">Challenge Sportif</h4>
+                                        <p class="opacity-80">Relevez le défi !</p>
+                                    </div>
+                                    <p class="mt-8 text-amber-200">Design dynamique</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Templates Grid Section -->
+    <section id="templates" class="py-16 lg:py-24 bg-slate-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 lg:mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
+                    Une galerie pour chaque idée
+                </h2>
+                <p class="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto">
+                    Explorez des designs conçus pour captiver votre audience et démarrez votre projet en un clic.
+                </p>
+            </div>
+
+            <!-- Filters -->
+            <div class="mb-10 lg:mb-14">
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <button onclick="filterTemplates('all')" class="filter-btn active">Tous</button>
+                    <button onclick="filterTemplates('sport')" class="filter-btn">Sport</button>
+                    <button onclick="filterTemplates('education')" class="filter-btn">Éducation</button>
+                    <button onclick="filterTemplates('formation')" class="filter-btn">Formation</button>
+                    <button onclick="filterTemplates('product')" class="filter-btn">Produit</button>
+                    <button onclick="filterTemplates('sale')" class="filter-btn">Vente</button>
+                </div>
+            </div>
+
+            <!-- Templates Grid -->
+            <div id="templates-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+                <!-- Template Cards will be dynamically populated or can be statically placed here -->
+                <!-- Example Card 1 -->
+                <div class="template-card-v2 group" data-category="sport" onclick="selectTemplate('sport-1')">
+                    <div class="card-v2-image-wrapper">
+                        <div class="card-v2-image bg-gradient-to-br from-orange-400 to-red-500">
+                            <i data-lucide="trophy" class="w-20 h-20 text-white/70"></i>
+                        </div>
+                        <div class="card-v2-overlay">
+                            <button class="card-v2-button">Utiliser ce template</button>
+                        </div>
+                    </div>
+                    <div class="card-v2-content">
+                        <h3 class="card-v2-title">Sport Event</h3>
+                        <p class="card-v2-subtitle">Instagram • 1080x1080</p>
+                        <span class="card-v2-badge">Nouveau</span>
+                    </div>
+                </div>
+
+                <!-- Example Card 2 -->
+                <div class="template-card-v2 group" data-category="education" onclick="selectTemplate('education-1')">
+                    <div class="card-v2-image-wrapper">
+                        <div class="card-v2-image bg-gradient-to-br from-blue-400 to-indigo-500">
+                            <i data-lucide="book-open" class="w-20 h-20 text-white/70"></i>
+                        </div>
+                        <div class="card-v2-overlay">
+                            <button class="card-v2-button">Utiliser ce template</button>
+                        </div>
+                    </div>
+                    <div class="card-v2-content">
+                        <h3 class="card-v2-title">Cours en ligne</h3>
+                        <p class="card-v2-subtitle">Facebook • 1200x628</p>
+                    </div>
+                </div>
+
+                <!-- Add other cards similarly -->
+                <div class="template-card-v2 group" data-category="formation" onclick="selectTemplate('formation-1')">
+                    <div class="card-v2-image-wrapper">
+                        <div class="card-v2-image bg-gradient-to-br from-violet-400 to-purple-500">
+                            <i data-lucide="graduation-cap" class="w-20 h-20 text-white/70"></i>
+                        </div>
+                        <div class="card-v2-overlay">
+                            <button class="card-v2-button">Utiliser ce template</button>
+                        </div>
+                    </div>
+                    <div class="card-v2-content">
+                        <h3 class="card-v2-title">Formation Pro</h3>
+                        <p class="card-v2-subtitle">LinkedIn • 1200x627</p>
+                        <span class="card-v2-badge">Nouveau</span>
+                    </div>
+                </div>
+
+                <div class="template-card-v2 group" data-category="product" onclick="selectTemplate('product-1')">
+                    <div class="card-v2-image-wrapper">
+                        <div class="card-v2-image bg-gradient-to-br from-emerald-400 to-teal-500">
+                            <i data-lucide="package" class="w-20 h-20 text-white/70"></i>
+                        </div>
+                        <div class="card-v2-overlay">
+                            <button class="card-v2-button">Utiliser ce template</button>
+                        </div>
+                    </div>
+                    <div class="card-v2-content">
+                        <h3 class="card-v2-title">Lancement Produit</h3>
+                        <p class="card-v2-subtitle">Instagram • 1080x1350</p>
+                    </div>
+                </div>
+
+                <div class="template-card-v2 group" data-category="sale" onclick="selectTemplate('sale-1')">
+                    <div class="card-v2-image-wrapper">
+                        <div class="card-v2-image bg-gradient-to-br from-pink-400 to-rose-500">
+                            <i data-lucide="tag" class="w-20 h-20 text-white/70"></i>
+                        </div>
+                        <div class="card-v2-overlay">
+                            <button class="card-v2-button">Utiliser ce template</button>
+                        </div>
+                    </div>
+                    <div class="card-v2-content">
+                        <h3 class="card-v2-title">Promo Vente</h3>
+                        <p class="card-v2-subtitle">TikTok • 1080x1920</p>
+                        <span class="card-v2-badge">Nouveau</span>
+                    </div>
+                </div>
+
+                <div class="template-card-v2 group" data-category="sport" onclick="selectTemplate('sport-2')">
+                    <div class="card-v2-image-wrapper">
+                        <div class="card-v2-image bg-gradient-to-br from-yellow-400 to-orange-500">
+                            <i data-lucide="target" class="w-20 h-20 text-white/70"></i>
+                        </div>
+                        <div class="card-v2-overlay">
+                            <button class="card-v2-button">Utiliser ce template</button>
+                        </div>
+                    </div>
+                    <div class="card-v2-content">
+                        <h3 class="card-v2-title">Fitness Challenge</h3>
+                        <p class="card-v2-subtitle">Instagram • 1080x1080</p>
+                    </div>
+                </div>
+
+                <div class="template-card-v2 group" data-category="education" onclick="selectTemplate('education-2')">
+                    <div class="card-v2-image-wrapper">
+                        <div class="card-v2-image bg-gradient-to-br from-cyan-400 to-blue-500">
+                            <i data-lucide="lightbulb" class="w-20 h-20 text-white/70"></i>
+                        </div>
+                        <div class="card-v2-overlay">
+                            <button class="card-v2-button">Utiliser ce template</button>
+                        </div>
+                    </div>
+                    <div class="card-v2-content">
+                        <h3 class="card-v2-title">Webinaire</h3>
+                        <p class="card-v2-subtitle">Facebook • 1200x628</p>
+                    </div>
+                </div>
+
+                <div class="template-card-v2 group" data-category="product" onclick="selectTemplate('product-2')">
+                    <div class="card-v2-image-wrapper">
+                        <div class="card-v2-image bg-gradient-to-br from-slate-700 to-slate-900">
+                            <i data-lucide="shopping-bag" class="w-20 h-20 text-white/70"></i>
+                        </div>
+                        <div class="card-v2-overlay">
+                            <button class="card-v2-button">Utiliser ce template</button>
+                        </div>
+                    </div>
+                    <div class="card-v2-content">
+                        <h3 class="card-v2-title">E-commerce</h3>
+                        <p class="card-v2-subtitle">Instagram • 1080x1080</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Generator Section -->
+    <section id="generator" class="py-16 lg:py-24 bg-white hidden-element">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8 lg:mb-12">
+                <button onclick="backToTemplates()" class="flex items-center gap-2 text-base text-slate-600 hover:text-slate-900 transition-colors">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    Retour aux templates
+                </button>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Preview Panel -->
+                <div class="order-2 lg:order-1">
+                    <div class="sticky top-24">
+                        <h3 class="text-xl lg:text-2xl font-semibold text-slate-900 mb-4">Aperçu en temps réel</h3>
+                        <div id="template-preview" class="bg-slate-100 rounded-2xl aspect-square flex items-center justify-center border border-slate-200 overflow-hidden">
+                            <div class="text-center p-8">
+                                <i data-lucide="eye" class="w-16 h-16 text-slate-400 mx-auto mb-4"></i>
+                                <p class="text-base lg:text-lg text-slate-600">Votre visuel apparaîtra ici</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Credits Counter -->
+                        <div class="mt-6 p-4 bg-violet-50 rounded-lg border border-violet-200">
+                            <div class="flex items-center justify-between">
+                                <span class="text-base text-slate-700">Crédits restants :</span>
+                                <span id="credits-counter" class="text-xl font-semibold text-violet-600">2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Form Panel -->
+                <div class="order-1 lg:order-2">
+                    <h3 class="text-xl lg:text-2xl font-semibold text-slate-900 mb-6">Personnalisez votre visuel</h3>
+                    
+                    <form id="generator-form" class="space-y-6">
+                        <!-- Title -->
+                        <div>
+                            <label class="block text-base font-medium text-slate-900 mb-2">Titre principal</label>
+                            <input type="text" id="title-input" placeholder="Ex: Formation Marketing Digital" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all" oninput="updatePreview()">
+                        </div>
+                        
+                        <!-- Description -->
+                        <div>
+                            <label class="block text-base font-medium text-slate-900 mb-2">Description</label>
+                            <textarea id="description-input" rows="3" placeholder="Décrivez votre offre en quelques mots..." class="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all resize-none" oninput="updatePreview()"></textarea>
+                        </div>
+                        
+                        <!-- Logo Upload -->
+                        <div>
+                            <label class="block text-base font-medium text-slate-900 mb-2">Logo (optionnel)</label>
+                            <div class="drop-zone border-2 border-dashed border-slate-300 rounded-lg p-6 text-center cursor-pointer hover:border-violet-400" onclick="document.getElementById('logo-input').click()">
+                                <i data-lucide="upload" class="w-12 h-12 text-slate-400 mx-auto mb-3"></i>
+                                <p class="text-base text-slate-600 mb-1">Glissez votre logo ici ou cliquez</p>
+                                <p class="text-sm text-slate-500">PNG, JPG jusqu'à 5MB</p>
+                                <input type="file" id="logo-input" accept="image/*" class="hidden" onchange="handleLogoUpload(event)">
+                            </div>
+                            <div id="logo-preview" class="mt-3 hidden">
+                                <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
+                                    <img id="logo-thumbnail" src="" alt="Logo" class="w-12 h-12 object-cover rounded">
+                                    <span id="logo-name" class="text-sm text-slate-700 flex-1"></span>
+                                    <button type="button" onclick="removeLogo()" class="text-slate-400 hover:text-red-500">
+                                        <i data-lucide="x" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Info -->
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-base font-medium text-slate-900 mb-2">Téléphone</label>
+                                <input type="tel" id="phone-input" placeholder="+225 XX XX XX XX" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all" oninput="updatePreview()">
+                            </div>
+                            <div>
+                                <label class="block text-base font-medium text-slate-900 mb-2">Email</label>
+                                <input type="email" id="email-input" placeholder="contact@exemple.com" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all" oninput="updatePreview()">
+                            </div>
+                        </div>
+                        
+                        <!-- Color Picker -->
+                        <div>
+                            <label class="block text-base font-medium text-slate-900 mb-2">Couleur principale</label>
+                            <div class="flex gap-3">
+                                <input type="color" id="color-input" value="#8b5cf6" class="w-20 h-12 cursor-pointer" onchange="updatePreview()">
+                                <input type="text" id="color-hex" value="#8b5cf6" placeholder="#8b5cf6" class="flex-1 px-4 py-3 border border-slate-300 rounded-lg text-base focus:ring-2 focus:ring-violet-500 focus:border-transparent" oninput="syncColorInput(this.value)">
+                            </div>
+                        </div>
+                        
+                        <!-- Style Selection -->
+                        <div>
+                            <label class="block text-base font-medium text-slate-900 mb-3">Style visuel</label>
+                            <div class="grid grid-cols-3 gap-3">
+                                <button type="button" onclick="selectStyle('moderne')" class="style-btn px-4 py-3 border-2 border-slate-300 rounded-lg text-base font-medium hover:border-violet-500 transition-all" data-style="moderne">
+                                    Moderne
+                                </button>
+                                <button type="button" onclick="selectStyle('luxe')" class="style-btn px-4 py-3 border-2 border-slate-300 rounded-lg text-base font-medium hover:border-violet-500 transition-all" data-style="luxe">
+                                    Luxe
+                                </button>
+                                <button type="button" onclick="selectStyle('classique')" class="style-btn px-4 py-3 border-2 border-slate-300 rounded-lg text-base font-medium hover:border-violet-500 transition-all" data-style="classique">
+                                    Classique
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Format Selection -->
+                        <div>
+                            <label class="block text-base font-medium text-slate-900 mb-3">Format</label>
+                            <select id="format-select" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all" onchange="updatePreview()">
+                                <option value="instagram-square">Instagram Carré (1080x1080)</option>
+                                <option value="instagram-portrait">Instagram Portrait (1080x1350)</option>
+                                <option value="instagram-story">Instagram Story (1080x1920)</option>
+                                <option value="facebook-post">Facebook Post (1200x628)</option>
+                                <option value="linkedin-post">LinkedIn Post (1200x627)</option>
+                                <option value="tiktok">TikTok (1080x1920)</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Generate Button -->
+                        <button type="button" onclick="generateVisual()" class="w-full px-6 py-4 bg-violet-600 text-white text-lg font-medium rounded-lg hover:bg-violet-700 transition-all hover:scale-105 shadow-lg hover:shadow-xl">
+                            Générer mon visuel
+                        </button>
+                        
+                        <!-- AI Suggestions -->
+                        <div class="p-4 bg-cyan-50 rounded-lg border border-cyan-200">
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="sparkles" class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <p class="text-sm font-medium text-cyan-900 mb-1">Suggestion automatique</p>
+                                    <p class="text-sm text-cyan-700">Utilisez des titres courts et percutants pour plus d'impact visuel</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Loading Modal -->
+    <div id="loading-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-60 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full text-center">
+            <div class="w-16 h-16 border-4 border-violet-200 border-t-violet-600 rounded-full animate-spin mx-auto mb-6"></div>
+            <h3 class="text-xl lg:text-2xl font-semibold text-slate-900 mb-3">Génération en cours...</h3>
+            <p class="text-base lg:text-lg text-slate-600 mb-6">Nous créons votre visuel professionnel</p>
+            <div class="w-full bg-slate-200 rounded-full h-2">
+                <div id="progress-bar" class="bg-violet-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Result Modal -->
+    <div id="result-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-60 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl p-6 lg:p-8 max-w-2xl w-full">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-xl lg:text-2xl font-semibold text-slate-900">Votre visuel est prêt !</h3>
+                <button onclick="closeResultModal()" class="text-slate-400 hover:text-slate-600">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <div id="result-preview" class="bg-slate-100 rounded-xl aspect-square mb-6 flex items-center justify-center">
+                <i data-lucide="check-circle" class="w-20 h-20 text-green-500"></i>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button onclick="downloadVisual()" class="flex-1 px-6 py-3 bg-violet-600 text-white text-base lg:text-lg font-medium rounded-lg hover:bg-violet-700 transition-all">
+                    <i data-lucide="download" class="w-5 h-5 inline mr-2"></i>
+                    Télécharger
+                </button>
+                <button onclick="createAnother()" class="flex-1 px-6 py-3 bg-slate-100 text-slate-900 text-base lg:text-lg font-medium rounded-lg hover:bg-slate-200 transition-all">
+                    Créer un autre
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Credits Exhausted Modal -->
+    <div id="credits-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-60 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl p-6 lg:p-8 max-w-md w-full text-center">
+            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="alert-circle" class="w-8 h-8 text-orange-600"></i>
+            </div>
+            <h3 class="text-xl lg:text-2xl font-semibold text-slate-900 mb-3">Crédits épuisés</h3>
+            <p class="text-base lg:text-lg text-slate-600 mb-6">Vous avez utilisé vos 2 crédits gratuits. Choisissez un forfait pour continuer.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button onclick="goToPricing()" class="flex-1 px-6 py-3 bg-violet-600 text-white text-base lg:text-lg font-medium rounded-lg hover:bg-violet-700 transition-all">
+                    Voir les forfaits
+                </button>
+                <button onclick="closeCreditsModal()" class="flex-1 px-6 py-3 bg-slate-100 text-slate-900 text-base lg:text-lg font-medium rounded-lg hover:bg-slate-200 transition-all">
+                    Fermer
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 lg:py-24 bg-slate-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 lg:mb-20">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
+                    Des forfaits flexibles pour grandir
+                </h2>
+                <p class="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto">
+                    Commencez gratuitement, puis choisissez un plan qui s'adapte à votre ambition.
+                </p>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="grid lg:grid-cols-3 gap-8 items-center max-w-6xl mx-auto">
+                <!-- Plan 1: Starter -->
+                <div class="pricing-card">
+                    <div class="p-8 flex flex-col h-full">
+                        <div>
+                            <h3 class="pricing-title">Starter</h3>
+                            <p class="pricing-subtitle">Pour bien démarrer</p>
+                            <div class="pricing-price">
+                                <span class="price-amount">7 500</span>
+                                <span class="price-currency">FCFA</span>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i data-lucide="check" class="feature-icon"></i>10 visuels générés</li>
+                                <li><i data-lucide="check" class="feature-icon"></i>Accès à tous les templates</li>
+                                <li><i data-lucide="check" class="feature-icon"></i>Téléchargement haute qualité</li>
+                                <li><i data-lucide="check" class="feature-icon"></i>Support par email</li>
+                            </ul>
+                        </div>
+                        <div class="mt-auto pt-8">
+                            <button onclick="selectPlan('starter', 7500, 10)" class="pricing-button secondary">Choisir ce plan</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plan 2: Pro (Featured) -->
+                <div class="pricing-card featured">
+                    <div class="p-8 flex flex-col h-full">
+                        <div>
+                            <div class="flex justify-between items-center">
+                                <h3 class="pricing-title">Professionnel</h3>
+                                <span class="featured-badge">Meilleur choix</span>
+                            </div>
+                            <p class="pricing-subtitle">Pour les créateurs exigeants</p>
+                            <div class="pricing-price">
+                                <span class="price-amount">15 000</span>
+                                <span class="price-currency">FCFA</span>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i data-lucide="check" class="feature-icon"></i>20 visuels générés</li>
+                                <li><i data-lucide="check" class="feature-icon"></i>Accès à tous les templates</li>
+                                <li><i data-lucide="check" class="feature-icon"></i>Téléchargement haute qualité</li>
+                                <li><i data-lucide="check" class="feature-icon"></i>Support prioritaire 24/7</li>
+                                <li><i data-lucide="check" class="feature-icon"></i>Suggestions IA avancées</li>
+                            </ul>
+                        </div>
+                        <div class="mt-auto pt-8">
+                            <button onclick="selectPlan('professionnel', 15000, 20)" class="pricing-button primary">Je prends le plan Pro</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plan 3: Enterprise -->
+                <div class="pricing-card">
+                    <div class="p-8 flex flex-col h-full">
+                        <div>
+                            <h3 class="pricing-title">Stratégique</h3>
+                            <p class="pricing-subtitle">Pour les équipes et agences</p>
+                            <div class="pricing-price">
+                                <span class="price-amount text-4xl">Sur devis</span>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i data-lucide="check" class="feature-icon"></i>Visuels illimités</li>
+                                <li><i data-lucide="check" class="feature-icon"></i>Templates sur mesure</li>
+                                <li><i data-lucide="check" class="feature-icon"></i>Support dédié et formation</li>
+                                <li><i data-lucide="check" class="feature-icon"></i>Accompagnement stratégique</li>
+                            </ul>
+                        </div>
+                        <div class="mt-auto pt-8">
+                            <button onclick="contactForCustomPlan()" class="pricing-button tertiary">Nous contacter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Checkout Form Section -->
+    <section id="checkout" class="py-16 lg:py-24 bg-white hidden-element">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+            <div class="mb-8">
+                <button onclick="backToPricing()" class="flex items-center gap-2 text-base text-slate-600 hover:text-slate-900 transition-colors">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    Retour aux tarifs
+                </button>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 lg:p-10">
+                <h2 class="text-2xl lg:text-3xl font-semibold text-slate-900 mb-2">Finaliser ma commande</h2>
+                <p class="text-base lg:text-lg text-slate-600 mb-8">Remplissez vos informations pour continuer</p>
+                
+                <!-- Selected Plan Summary -->
+                <div id="plan-summary" class="mb-8 p-6 bg-violet-50 rounded-xl border border-violet-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-base font-medium text-slate-700">Plan sélectionné :</span>
+                        <span id="selected-plan-name" class="text-lg font-semibold text-violet-900">Professionnel</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-base font-medium text-slate-700">Prix :</span>
+                        <span id="selected-plan-price" class="text-2xl font-semibold text-slate-900">15 000 FCFA</span>
+                    </div>
+                </div>
+                
+                <form id="checkout-form" class="space-y-6" onsubmit="submitCheckout(event)">
+                    <!-- Personal Info -->
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-base font-medium text-slate-900 mb-2">Prénom *</label>
+                            <input type="text" id="checkout-firstname" required="" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-base font-medium text-slate-900 mb-2">Nom *</label>
+                            <input type="text" id="checkout-lastname" required="" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all">
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div>
+                        <label class="block text-base font-medium text-slate-900 mb-2">Téléphone (WhatsApp) *</label>
+                        <input type="tel" id="checkout-phone" required="" placeholder="+225 XX XX XX XX" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all">
+                        <p class="mt-2 text-sm text-slate-600">Nous vous contacterons sur WhatsApp</p>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-base font-medium text-slate-900 mb-2">Email *</label>
+                        <input type="email" id="checkout-email" required="" placeholder="votre@email.com" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all">
+                    </div>
+                    
+                    <!-- Country Selection (Africa) -->
+                    <div>
+                        <label class="block text-base font-medium text-slate-900 mb-2">Pays *</label>
+                        <select id="checkout-country" required="" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all">
+                            <option value="">Sélectionnez votre pays</option>
+                            <option value="CI">Côte d'Ivoire</option>
+                            <option value="SN">Sénégal</option>
+                            <option value="BJ">Bénin</option>
+                            <option value="TG">Togo</option>
+                            <option value="BF">Burkina Faso</option>
+                            <option value="ML">Mali</option>
+                            <option value="NE">Niger</option>
+                            <option value="CM">Cameroun</option>
+                            <option value="GA">Gabon</option>
+                            <option value="CG">Congo</option>
+                            <option value="CD">RD Congo</option>
+                            <option value="MA">Maroc</option>
+                            <option value="TN">Tunisie</option>
+                            <option value="DZ">Algérie</option>
+                            <option value="GH">Ghana</option>
+                            <option value="NG">Nigeria</option>
+                            <option value="KE">Kenya</option>
+                            <option value="TZ">Tanzanie</option>
+                            <option value="UG">Ouganda</option>
+                            <option value="ZA">Afrique du Sud</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Plan Modification -->
+                    <div>
+                        <label class="block text-base font-medium text-slate-900 mb-2">Modifier le forfait</label>
+                        <select id="checkout-plan-select" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all" onchange="updateCheckoutPlan()">
+                            <option value="starter-7500-10">Starter - 10 visuels (7 500 FCFA)</option>
+                            <option value="professionnel-15000-20" selected="">Professionnel - 20 visuels (15 000 FCFA)</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Terms -->
+                    <div class="flex items-start gap-3">
+                        <input type="checkbox" id="checkout-terms" required="" class="mt-1 w-5 h-5 text-violet-600 border-slate-300 rounded focus:ring-2 focus:ring-violet-500">
+                        <label for="checkout-terms" class="text-base text-slate-700">
+                            J'accepte les <a href="#" class="text-violet-600 hover:underline">conditions générales</a> et la <a href="#" class="text-violet-600 hover:underline">politique de confidentialité</a>
+                        </label>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full px-6 py-4 bg-violet-600 text-white text-lg font-medium rounded-lg hover:bg-violet-700 transition-all hover:scale-105 shadow-lg hover:shadow-xl">
+                        Confirmer et procéder au paiement
+                    </button>
+                    
+                    <!-- Security Notice -->
+                    <div class="flex items-center justify-center gap-2 text-sm text-slate-600">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-green-600"></i>
+                        Paiement 100% sécurisé
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- User Dashboard Section -->
+    <section id="dashboard" class="py-16 lg:py-24 bg-slate-50 hidden-element">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <h2 class="text-2xl lg:text-3xl font-semibold text-slate-900 mb-2">Mon espace</h2>
+                <p class="text-base lg:text-lg text-slate-600">Gérez vos visuels et crédits</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+                <!-- Credits Card -->
+                <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-md border border-slate-200">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-violet-100 rounded-xl flex items-center justify-center">
+                            <i data-lucide="credit-card" class="w-6 h-6 text-violet-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-600">Crédits restants</p>
+                            <p id="dashboard-credits" class="text-2xl font-semibold text-slate-900">18</p>
+                        </div>
+                    </div>
+                    <button onclick="goToPricing()" class="w-full mt-4 px-4 py-2 bg-slate-100 text-slate-900 text-sm font-medium rounded-lg hover:bg-slate-200 transition-all">
+                        Acheter plus
+                    </button>
+                </div>
+                
+                <!-- Total Visuals Card -->
+                <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-md border border-slate-200">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center">
+                            <i data-lucide="image" class="w-6 h-6 text-cyan-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-600">Visuels créés</p>
+                            <p class="text-2xl font-semibold text-slate-900">12</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Action Card -->
+                <div class="bg-gradient-to-br from-violet-600 to-cyan-600 rounded-2xl p-6 lg:p-8 shadow-md text-white">
+                    <h3 class="text-lg font-semibold mb-2">Créer un visuel</h3>
+                    <p class="text-sm text-white/80 mb-4">Commencez un nouveau projet</p>
+                    <button onclick="scrollToGenerator()" class="w-full px-4 py-2 bg-white text-violet-600 text-sm font-medium rounded-lg hover:bg-slate-50 transition-all">
+                        Nouveau visuel
+                    </button>
+                </div>
+            </div>
+            
+            <!-- History -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">
+                <div class="p-6 lg:p-8 border-b border-slate-200">
+                    <h3 class="text-xl lg:text-2xl font-semibold text-slate-900">Historique des visuels</h3>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-slate-50">
+                            <tr>
+                                <th class="px-6 py-4 text-left text-sm font-medium text-slate-700">Aperçu</th>
+                                <th class="px-6 py-4 text-left text-sm font-medium text-slate-700">Template</th>
+                                <th class="px-6 py-4 text-left text-sm font-medium text-slate-700">Date</th>
+                                <th class="px-6 py-4 text-left text-sm font-medium text-slate-700">Format</th>
+                                <th class="px-6 py-4 text-right text-sm font-medium text-slate-700">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="px-6 py-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-violet-400 to-purple-500 rounded-lg"></div>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-slate-900">Formation Pro</td>
+                                <td class="px-6 py-4 text-sm text-slate-600">Aujourd'hui</td>
+                                <td class="px-6 py-4 text-sm text-slate-600">Instagram</td>
+                                <td class="px-6 py-4 text-right">
+                                    <button class="text-violet-600 hover:text-violet-700 text-sm font-medium">
+                                        <i data-lucide="download" class="w-4 h-4 inline"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="px-6 py-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg"></div>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-slate-900">Sport Event</td>
+                                <td class="px-6 py-4 text-sm text-slate-600">Hier</td>
+                                <td class="px-6 py-4 text-sm text-slate-600">Facebook</td>
+                                <td class="px-6 py-4 text-right">
+                                    <button class="text-violet-600 hover:text-violet-700 text-sm font-medium">
+                                        <i data-lucide="download" class="w-4 h-4 inline"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-900 text-white py-16 lg:py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <div class="text-xl lg:text-2xl font-semibold tracking-tighter mb-4">
+                        STUDYA<span class="text-violet-400">CREATOR</span>
+                    </div>
+                    <p class="text-base text-slate-400 mb-6">
+                        Créez des visuels marketing professionnels en quelques clics
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-violet-600 transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-violet-600 transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-violet-600 transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product -->
+                <div>
+                    <h4 class="text-base font-semibold mb-4">Produit</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#templates" class="text-base text-slate-400 hover:text-white transition-colors">Templates</a></li>
+                        <li><a href="#how-it-works" class="text-base text-slate-400 hover:text-white transition-colors">Fonctionnement</a></li>
+                        <li><a href="#pricing" class="text-base text-slate-400 hover:text-white transition-colors">Tarifs</a></li>
+                        <li><a href="#" class="text-base text-slate-400 hover:text-white transition-colors">API</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h4 class="text-base font-semibold mb-4">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-base text-slate-400 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-base text-slate-400 hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-base text-slate-400 hover:text-white transition-colors">Tutoriels</a></li>
+                        <li><a href="#" class="text-base text-slate-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-base font-semibold mb-4">Nous contacter</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="https://wa.me/2250700000000" target="_blank" class="flex items-center gap-3 text-base text-slate-400 hover:text-white transition-colors">
+                                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                                WhatsApp
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:contact@studyacreator.com" class="flex items-center gap-3 text-base text-slate-400 hover:text-white transition-colors">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                                Email
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-6">
+                        <button onclick="contactForCustomPlan()" class="px-4 py-2 bg-violet-600 text-white text-sm font-medium rounded-lg hover:bg-violet-700 transition-all">
+                            Accompagnement personnalisé
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="pt-8 border-t border-slate-800">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-sm text-slate-400">
+                        © 2024 Studya Creator. Tous droits réservés.
+                    </p>
+                    <div class="flex gap-6">
+                        <a href="#" class="text-sm text-slate-400 hover:text-white transition-colors">Mentions légales</a>
+                        <a href="#" class="text-sm text-slate-400 hover:text-white transition-colors">Confidentialité</a>
+                        <a href="#" class="text-sm text-slate-400 hover:text-white transition-colors">CGV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="script.js" defer></script>
+
+</body></html>
