@@ -1,5 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* --- PWA Install Popup --- */
+.dark-mode #pwa-install-popup .pwa-popup-content {
+    background-color: #ffffff;
+}
+
+.dark-mode #pwa-install-popup h3 {
+    color: #0f172a;
+}
+
+.dark-mode #pwa-install-popup p {
+    color: #475569;
+}
+
+.dark-mode #pwa-install-popup #pwa-close-btn {
+    background-color: #e2e8f0;
+    color: #64748b;
+}
+
+.dark-mode #pwa-install-popup #pwa-close-btn:hover {
+    background-color: #cbd5e1;
+    color: #334155;
+}
+
+#pwa-install-popup .pwa-popup-content {
+    transform: translateY(150%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#pwa-install-popup.show .pwa-popup-content {
+    transform: translateY(0);
+}
+
 /* --- Smooth Theme Transition --- */
 body, .bg-white, .bg-slate-50, .bg-slate-100, .bg-slate-200, .bg-slate-800, .bg-slate-900, .backdrop-blur-lg, input, textarea, select, button, a, h1, h2, h3, h4, p, span, div, section, header, nav {
     transition-property: color, background-color, border-color, fill, stroke;

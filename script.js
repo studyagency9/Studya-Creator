@@ -631,6 +631,18 @@ dropZone.addEventListener('drop', (e) => {
 });
 
 // Initialize on load
+window.addEventListener('load', () => {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(registration => {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      })
+      .catch(error => {
+        console.log('ServiceWorker registration failed: ', error);
+      });
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.network-btn').forEach(btn => {
     btn.addEventListener('click', () => selectNetwork(btn.dataset.network));
@@ -640,7 +652,45 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeDarkMode();
   renderSkeletonLoaders();
   fetchTemplates();
+  handlePWAInstallPrompt();
 });
+
+function handlePWAInstallPrompt() {
+  const installPopup = document.getElementById('pwa-install-popup');
+  const installBtn = document.getElementById('pwa-install-btn');
+  const closeBtn = document.getElementById('pwa-close-btn');
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    // Show the custom install popup after a short delay
+    setTimeout(() => {
+      installPopup.classList.remove('hidden');
+      setTimeout(() => installPopup.classList.add('show'), 10);
+    }, 3000);
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`User response to the install prompt: ${outcome}`);
+      deferredPrompt = null;
+      hidePopup();
+    }
+  });
+
+  closeBtn.addEventListener('click', () => {
+    hidePopup();
+  });
+
+  function hidePopup() {
+    installPopup.classList.remove('show');
+    setTimeout(() => installPopup.classList.add('hidden'), 400);
+  }
+}
 
 // Dark Mode Toggle
 function initializeDarkMode() {

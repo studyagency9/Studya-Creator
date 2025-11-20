@@ -6,6 +6,12 @@
     <meta name="keywords" content="visuels marketing, création graphique, templates réseaux sociaux, design professionnel, Studya Creator">
     <meta name="author" content="Studya Creator">
     <link rel="canonical" href="https://studya-creator.vercel.app">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#8b5cf6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="StudyaCreator">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -1061,5 +1067,22 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
     <link rel="preload" href="script.js" as="script">
     <script src="script.js" defer></script>
+
+    <!-- PWA Install Popup -->
+    <div id="pwa-install-popup" class="hidden fixed bottom-0 inset-x-0 z-50 p-4">
+        <div class="pwa-popup-content bg-slate-800 text-white rounded-2xl p-6 shadow-2xl max-w-md mx-auto flex items-center gap-4">
+            <img src="/icons/icon-192x192.png" alt="Logo Studya Creator" class="w-16 h-16 rounded-lg flex-shrink-0">
+            <div class="flex-grow">
+                <h3 class="font-semibold text-lg">Installer l'application</h3>
+                <p class="text-sm text-slate-300">Accès rapide et hors ligne depuis votre écran d'accueil.</p>
+            </div>
+            <button id="pwa-install-btn" class="ml-4 px-5 py-2.5 bg-violet-600 text-white text-sm font-medium rounded-lg hover:bg-violet-700 transition-all whitespace-nowrap">
+                Installer
+            </button>
+            <button id="pwa-close-btn" class="absolute -top-2 -right-2 w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center text-slate-400 hover:bg-slate-600 hover:text-white transition-all">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </div>
 
 </body></html>
