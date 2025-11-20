@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studya Creator — Créez vos visuels marketing en quelques clics</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -89,7 +89,7 @@
                 
                 <!-- Hero Visual -->
                 <div class="relative">
-                    <div class="float-animation relative bg-white rounded-2xl shadow-2xl p-6 lg:p-8 border border-slate-200">
+                    <div id="hero-visual" class="float-animation relative bg-white rounded-2xl shadow-2xl p-6 lg:p-8 border border-slate-200">
                         <div class="aspect-square bg-gradient-to-br from-violet-100 to-cyan-100 rounded-xl mb-4 flex items-center justify-center">
                             <i data-lucide="image" class="w-24 h-24 text-violet-400"></i>
                         </div>
@@ -362,142 +362,39 @@
 
             <!-- Filters -->
             <div class="mb-10 lg:mb-14">
-                <div class="flex flex-wrap gap-3 justify-center">
-                    <button onclick="filterTemplates('all')" class="filter-btn active">Tous</button>
-                    <button onclick="filterTemplates('sport')" class="filter-btn">Sport</button>
-                    <button onclick="filterTemplates('education')" class="filter-btn">Éducation</button>
-                    <button onclick="filterTemplates('formation')" class="filter-btn">Formation</button>
-                    <button onclick="filterTemplates('product')" class="filter-btn">Produit</button>
-                    <button onclick="filterTemplates('sale')" class="filter-btn">Vente</button>
+                <div id="dynamic-filters-container" class="flex flex-wrap gap-3 justify-center">
+                    <!-- Les boutons de filtre seront injectés ici -->
+                </div>
+            </div>
+
+                                    <!-- Mobile Templates Swiper -->
+            <div class="sm:hidden">
+                <div class="swiper templates-swiper">
+                    <div class="swiper-wrapper"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
 
             <!-- Templates Grid -->
             <div id="templates-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-                <!-- Template Cards will be dynamically populated or can be statically placed here -->
-                <!-- Example Card 1 -->
-                <div class="template-card-v2 group" data-category="sport" onclick="selectTemplate('sport-1')">
-                    <div class="card-v2-image-wrapper">
-                        <div class="card-v2-image bg-gradient-to-br from-orange-400 to-red-500">
-                            <i data-lucide="trophy" class="w-20 h-20 text-white/70"></i>
-                        </div>
-                        <div class="card-v2-overlay">
-                            <button class="card-v2-button">Utiliser ce template</button>
-                        </div>
-                    </div>
-                    <div class="card-v2-content">
-                        <h3 class="card-v2-title">Sport Event</h3>
-                        <p class="card-v2-subtitle">Instagram • 1080x1080</p>
-                        <span class="card-v2-badge">Nouveau</span>
-                    </div>
-                </div>
+                <!-- Templates will be populated here -->
+            </div>
 
-                <!-- Example Card 2 -->
-                <div class="template-card-v2 group" data-category="education" onclick="selectTemplate('education-1')">
-                    <div class="card-v2-image-wrapper">
-                        <div class="card-v2-image bg-gradient-to-br from-blue-400 to-indigo-500">
-                            <i data-lucide="book-open" class="w-20 h-20 text-white/70"></i>
-                        </div>
-                        <div class="card-v2-overlay">
-                            <button class="card-v2-button">Utiliser ce template</button>
-                        </div>
-                    </div>
-                    <div class="card-v2-content">
-                        <h3 class="card-v2-title">Cours en ligne</h3>
-                        <p class="card-v2-subtitle">Facebook • 1200x628</p>
-                    </div>
-                </div>
+            <!-- 'View All' Button Container -->
+            <div id="view-all-container" class="text-center mt-12"></div>
 
-                <!-- Add other cards similarly -->
-                <div class="template-card-v2 group" data-category="formation" onclick="selectTemplate('formation-1')">
-                    <div class="card-v2-image-wrapper">
-                        <div class="card-v2-image bg-gradient-to-br from-violet-400 to-purple-500">
-                            <i data-lucide="graduation-cap" class="w-20 h-20 text-white/70"></i>
-                        </div>
-                        <div class="card-v2-overlay">
-                            <button class="card-v2-button">Utiliser ce template</button>
-                        </div>
+            <!-- Full Theme Gallery Modal -->
+            <div id="full-gallery-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                <div class="bg-white rounded-2xl max-w-6xl w-full h-[90vh] flex flex-col">
+                    <div class="flex items-center justify-between p-6 border-b border-slate-200">
+                        <h3 id="full-gallery-title" class="text-2xl font-semibold text-slate-900"></h3>
+                        <button onclick="closeFullGalleryModal()" class="text-slate-400 hover:text-slate-600">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
                     </div>
-                    <div class="card-v2-content">
-                        <h3 class="card-v2-title">Formation Pro</h3>
-                        <p class="card-v2-subtitle">LinkedIn • 1200x627</p>
-                        <span class="card-v2-badge">Nouveau</span>
-                    </div>
-                </div>
-
-                <div class="template-card-v2 group" data-category="product" onclick="selectTemplate('product-1')">
-                    <div class="card-v2-image-wrapper">
-                        <div class="card-v2-image bg-gradient-to-br from-emerald-400 to-teal-500">
-                            <i data-lucide="package" class="w-20 h-20 text-white/70"></i>
-                        </div>
-                        <div class="card-v2-overlay">
-                            <button class="card-v2-button">Utiliser ce template</button>
-                        </div>
-                    </div>
-                    <div class="card-v2-content">
-                        <h3 class="card-v2-title">Lancement Produit</h3>
-                        <p class="card-v2-subtitle">Instagram • 1080x1350</p>
-                    </div>
-                </div>
-
-                <div class="template-card-v2 group" data-category="sale" onclick="selectTemplate('sale-1')">
-                    <div class="card-v2-image-wrapper">
-                        <div class="card-v2-image bg-gradient-to-br from-pink-400 to-rose-500">
-                            <i data-lucide="tag" class="w-20 h-20 text-white/70"></i>
-                        </div>
-                        <div class="card-v2-overlay">
-                            <button class="card-v2-button">Utiliser ce template</button>
-                        </div>
-                    </div>
-                    <div class="card-v2-content">
-                        <h3 class="card-v2-title">Promo Vente</h3>
-                        <p class="card-v2-subtitle">TikTok • 1080x1920</p>
-                        <span class="card-v2-badge">Nouveau</span>
-                    </div>
-                </div>
-
-                <div class="template-card-v2 group" data-category="sport" onclick="selectTemplate('sport-2')">
-                    <div class="card-v2-image-wrapper">
-                        <div class="card-v2-image bg-gradient-to-br from-yellow-400 to-orange-500">
-                            <i data-lucide="target" class="w-20 h-20 text-white/70"></i>
-                        </div>
-                        <div class="card-v2-overlay">
-                            <button class="card-v2-button">Utiliser ce template</button>
-                        </div>
-                    </div>
-                    <div class="card-v2-content">
-                        <h3 class="card-v2-title">Fitness Challenge</h3>
-                        <p class="card-v2-subtitle">Instagram • 1080x1080</p>
-                    </div>
-                </div>
-
-                <div class="template-card-v2 group" data-category="education" onclick="selectTemplate('education-2')">
-                    <div class="card-v2-image-wrapper">
-                        <div class="card-v2-image bg-gradient-to-br from-cyan-400 to-blue-500">
-                            <i data-lucide="lightbulb" class="w-20 h-20 text-white/70"></i>
-                        </div>
-                        <div class="card-v2-overlay">
-                            <button class="card-v2-button">Utiliser ce template</button>
-                        </div>
-                    </div>
-                    <div class="card-v2-content">
-                        <h3 class="card-v2-title">Webinaire</h3>
-                        <p class="card-v2-subtitle">Facebook • 1200x628</p>
-                    </div>
-                </div>
-
-                <div class="template-card-v2 group" data-category="product" onclick="selectTemplate('product-2')">
-                    <div class="card-v2-image-wrapper">
-                        <div class="card-v2-image bg-gradient-to-br from-slate-700 to-slate-900">
-                            <i data-lucide="shopping-bag" class="w-20 h-20 text-white/70"></i>
-                        </div>
-                        <div class="card-v2-overlay">
-                            <button class="card-v2-button">Utiliser ce template</button>
-                        </div>
-                    </div>
-                    <div class="card-v2-content">
-                        <h3 class="card-v2-title">E-commerce</h3>
-                        <p class="card-v2-subtitle">Instagram • 1080x1080</p>
+                    <div id="full-gallery-content" class="p-6 lg:p-8 overflow-y-auto">
+                        <div id="modal-category-filters" class="flex flex-wrap gap-2 justify-center mb-8"></div>
+                        <div id="modal-templates-grid"></div>
                     </div>
                 </div>
             </div>
@@ -516,9 +413,9 @@
             
             <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
                 <!-- Preview Panel -->
-                <div class="order-2 lg:order-1">
+                <div class="order-1 lg:order-1">
                     <div class="sticky top-24">
-                        <h3 class="text-xl lg:text-2xl font-semibold text-slate-900 mb-4">Aperçu en temps réel</h3>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-4">Template sélectionné</h3>
                         <div id="template-preview" class="bg-slate-100 rounded-2xl aspect-square flex items-center justify-center border border-slate-200 overflow-hidden">
                             <div class="text-center p-8">
                                 <i data-lucide="eye" class="w-16 h-16 text-slate-400 mx-auto mb-4"></i>
@@ -537,7 +434,7 @@
                 </div>
                 
                 <!-- Form Panel -->
-                <div class="order-1 lg:order-2">
+                <div class="order-2 lg:order-2">
                     <h3 class="text-xl lg:text-2xl font-semibold text-slate-900 mb-6">Personnalisez votre visuel</h3>
                     
                     <form id="generator-form" class="space-y-6">
@@ -610,17 +507,27 @@
                             </div>
                         </div>
                         
-                        <!-- Format Selection -->
+                                                <!-- Network Selection -->
                         <div>
-                            <label class="block text-base font-medium text-slate-900 mb-3">Format</label>
-                            <select id="format-select" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all" onchange="updatePreview()">
-                                <option value="instagram-square">Instagram Carré (1080x1080)</option>
-                                <option value="instagram-portrait">Instagram Portrait (1080x1350)</option>
-                                <option value="instagram-story">Instagram Story (1080x1920)</option>
-                                <option value="facebook-post">Facebook Post (1200x628)</option>
-                                <option value="linkedin-post">LinkedIn Post (1200x627)</option>
-                                <option value="tiktok">TikTok (1080x1920)</option>
-                            </select>
+                            <label class="block text-base font-medium text-slate-900 mb-3">Réseaux</label>
+                            <div id="network-selector" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                <button type="button" data-network="facebook" class="network-btn active flex items-center justify-center gap-2 p-3 border-2 border-slate-300 rounded-lg">
+                                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                                    <span class="hidden sm:inline">Facebook</span>
+                                </button>
+                                <button type="button" data-network="instagram" class="network-btn flex items-center justify-center gap-2 p-3 border-2 border-slate-300 rounded-lg">
+                                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                                    <span class="hidden sm:inline">Instagram</span>
+                                </button>
+                                <button type="button" data-network="twitter" class="network-btn flex items-center justify-center gap-2 p-3 border-2 border-slate-300 rounded-lg">
+                                    <i data-lucide="twitter" class="w-5 h-5"></i>
+                                    <span class="hidden sm:inline">Twitter</span>
+                                </button>
+                                 <button type="button" data-network="linkedin" class="network-btn flex items-center justify-center gap-2 p-3 border-2 border-slate-300 rounded-lg">
+                                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                                    <span class="hidden sm:inline">LinkedIn</span>
+                                </button>
+                            </div>
                         </div>
                         
                         <!-- Generate Button -->
@@ -839,6 +746,25 @@
                     <div>
                         <label class="block text-base font-medium text-slate-900 mb-2">Email *</label>
                         <input type="email" id="checkout-email" required="" placeholder="votre@email.com" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all">
+                    </div>
+                    
+                    <!-- Réseaux Sociaux -->
+                    <div>
+                        <label class="block text-base font-medium text-slate-900 mb-2">Réseaux sociaux</label>
+                        <div id="network-selector" class="flex flex-wrap gap-3">
+                            <button data-network="facebook" class="network-btn active flex items-center gap-2 p-3 border border-slate-300 rounded-lg">
+                                <i data-lucide="facebook" class="w-5 h-5"></i> Facebook
+                            </button>
+                            <button data-network="instagram" class="network-btn flex items-center gap-2 p-3 border border-slate-300 rounded-lg">
+                                <i data-lucide="instagram" class="w-5 h-5"></i> Instagram
+                            </button>
+                            <button data-network="twitter" class="network-btn flex items-center gap-2 p-3 border border-slate-300 rounded-lg">
+                                <i data-lucide="twitter" class="w-5 h-5"></i> Twitter
+                            </button>
+                            <button data-network="linkedin" class="network-btn flex items-center gap-2 p-3 border border-slate-300 rounded-lg">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i> LinkedIn
+                            </button>
+                        </div>
                     </div>
                     
                     <!-- Country Selection (Africa) -->
@@ -1077,7 +1003,7 @@
             <div class="pt-8 border-t border-slate-800">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                     <p class="text-sm text-slate-400">
-                        © 2024 Studya Creator. Tous droits réservés.
+                        2024 Studya Creator. Tous droits réservés.
                     </p>
                     <div class="flex gap-6">
                         <a href="#" class="text-sm text-slate-400 hover:text-white transition-colors">Mentions légales</a>
@@ -1089,7 +1015,7 @@
         </div>
     </footer>
     
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
     <script src="script.js" defer></script>
 
 </body></html>
