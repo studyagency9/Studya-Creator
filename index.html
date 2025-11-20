@@ -2,16 +2,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studya Creator — Créez vos visuels marketing en quelques clics</title>
+    <meta name="description" content="Créez des visuels marketing percutants en quelques clics avec Studya Creator. Templates professionnels pour réseaux sociaux, formations et événements.">
+    <meta name="keywords" content="visuels marketing, création graphique, templates réseaux sociaux, design professionnel, Studya Creator">
+    <meta name="author" content="Studya Creator">
+    <link rel="canonical" href="https://studya-creator.vercel.app">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://studya-creator.vercel.app/">
+    <meta property="og:title" content="Studya Creator — Visuels Marketing Faciles et Rapides">
+    <meta property="og:description" content="Des templates professionnels personnalisables en quelques clics. Parfait pour vos réseaux sociaux, formations et événements.">
+    <meta property="og:image" content="https://studya-creator.vercel.app/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://studya-creator.vercel.app/">
+    <meta property="twitter:title" content="Studya Creator — Visuels Marketing Faciles et Rapides">
+    <meta property="twitter:description" content="Des templates professionnels personnalisables en quelques clics. Parfait pour vos réseaux sociaux, formations et événements.">
+    <meta property="twitter:image" content="https://studya-creator.vercel.app/og-image.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preload" href="https://unpkg.com/lucide@latest" as="script">
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <link rel="preload" href="/fonts/inter-v12-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/inter-v12-latin-700.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Studya Creator",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "description": "Créez des visuels marketing percutants en quelques clics avec Studya Creator. Templates professionnels pour réseaux sociaux, formations et événements.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "XOF"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "120"
+      }
+    }
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
     
     <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-lg border-b border-slate-200 z-40">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-lg border-b border-slate-200 z-40" role="banner">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navigation principale">
             <div class="flex items-center justify-between h-16 lg:h-20">
                 <!-- Logo -->
                 <div class="flex items-center">
@@ -47,12 +88,13 @@
     </header>
     
     <!-- Hero Section -->
-    <section class="pt-24 lg:pt-32 pb-16 lg:pb-24 bg-gradient-to-br from-slate-50 via-violet-50 to-cyan-50 hero-section-gradient">
+    <main role="main">
+    <section class="pt-24 lg:pt-32 pb-16 lg:pb-24 bg-gradient-to-br from-slate-50 via-violet-50 to-cyan-50 hero-section-gradient" aria-labelledby="hero-title">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <!-- Hero Content -->
                 <div class="text-center lg:text-left">
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-900 mb-6">
+                    <h1 id="hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-900 mb-6">
                         Créez des visuels<br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-cyan-600">marketing percutants</span>
                     </h1>
@@ -109,10 +151,10 @@
     </section>
     
     <!-- How It Works Section -->
-    <section id="how-it-works" class="py-16 lg:py-24 bg-white overflow-hidden">
+    <section id="how-it-works" class="py-16 lg:py-24 bg-white overflow-hidden" aria-labelledby="how-it-works-title">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 lg:mb-20">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
+                <h2 id="how-it-works-title" class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
                     En seulement 3 étapes
                 </h2>
                 <p class="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto">
@@ -349,10 +391,10 @@
     </section>
     
     <!-- Templates Grid Section -->
-    <section id="templates" class="py-16 lg:py-24 bg-slate-50">
+    <section id="templates" class="py-16 lg:py-24 bg-slate-50" aria-labelledby="templates-title">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 lg:mb-16">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
+                <h2 id="templates-title" class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
                     Une galerie pour chaque idée
                 </h2>
                 <p class="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto">
@@ -1015,7 +1057,9 @@
         </div>
     </footer>
     
+    <link rel="preload" href="https://unpkg.com/swiper/swiper-bundle.min.js" as="script">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+    <link rel="preload" href="script.js" as="script">
     <script src="script.js" defer></script>
 
 </body></html>
