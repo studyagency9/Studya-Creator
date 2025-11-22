@@ -23,6 +23,40 @@ function shuffleArray(array) {
 // If your backend is on a different port or domain, uncomment and adjust the following line:
 const BASE_API_URL = 'https://backend-studyacreator.onrender.com/api';
 
+// --- API Service ---
+const apiService = {
+  async get(endpoint) {
+    const response = await fetch(`${BASE_API_URL}/${endpoint}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  },
+
+  async post(endpoint, data) {
+    const response = await fetch(`${BASE_API_URL}/${endpoint}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}, statusText: ${response.statusText}`);
+    }
+    return response.json();
+  },
+
+  // Specific methods
+  getTemplates() {
+    return this.get('templates');
+  },
+
+  createOrder(orderData) {
+    return this.post('orders', orderData);
+  },
+};
+
 // API Service for Templates
 function renderSkeletonLoaders() {
   const grid = document.getElementById('templates-grid');
@@ -43,11 +77,7 @@ function renderSkeletonLoaders() {
 
 async function fetchTemplates() {
   try {
-    const response = await fetch(`${BASE_API_URL}/templates`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch templates');
-    }
-    templatesData = await response.json();
+    templatesData = await apiService.getTemplates();
     renderDynamicFilters(templatesData);
     // Automatically display the first theme's templates on initial load
         if (templatesData.length > 0) {
@@ -652,44 +682,130 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeDarkMode();
   renderSkeletonLoaders();
   fetchTemplates();
-  handlePWAInstallPrompt();
+  initializeOrderModal();
 });
 
-function handlePWAInstallPrompt() {
-  const installPopup = document.getElementById('pwa-install-popup');
-  const installBtn = document.getElementById('pwa-install-btn');
-  const closeBtn = document.getElementById('pwa-close-btn');
-  let deferredPrompt;
+function initializeOrderModal() {
+    const orderModal = document.getElementById('order-modal');
+    if (!orderModal) return;
 
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
+    const closeModalBtn = document.getElementById('order-modal-close-btn');
+    const orderForm = document.getElementById('order-form');
+    const phoneInput = document.querySelector("#phoneNumber");
+    let iti;
+    const countrySelector = document.getElementById('country');
+    const submitBtn = document.getElementById('submit-order-btn');
+    const submitBtnText = document.getElementById('submit-order-text');
+    const submitBtnLoader = document.getElementById('submit-order-loader');
+    const successMsg = document.getElementById('order-success-msg');
+    const errorMsg = document.getElementById('order-error-msg');
 
-    // Show the custom install popup after a short delay
-    setTimeout(() => {
-      installPopup.classList.remove('hidden');
-      setTimeout(() => installPopup.classList.add('show'), 10);
-    }, 3000);
-  });
+    const africanCountries = ["Algérie", "Angola", "Bénin", "Botswana", "Burkina Faso", "Burundi", "Cabo Verde", "Cameroun", "République centrafricaine", "Tchad", "Comores", "Congo (Congo-Brazzaville)", "République démocratique du Congo", "Côte d'Ivoire", "Djibouti", "Égypte", "Guinée équatoriale", "Érythrée", "Eswatini", "Éthiopie", "Gabon", "Gambie", "Ghana", "Guinée", "Guinée-Bissau", "Kenya", "Lesotho", "Liberia", "Libye", "Madagascar", "Malawi", "Mali", "Mauritanie", "Maurice", "Maroc", "Mozambique", "Namibie", "Niger", "Nigeria", "Rwanda", "Sao Tomé-et-Principe", "Sénégal", "Seychelles", "Sierra Leone", "Somalie", "Afrique du Sud", "Soudan du Sud", "Soudan", "Tanzanie", "Togo", "Tunisie", "Ouganda", "Zambie", "Zimbabwe"];
 
-  installBtn.addEventListener('click', async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      console.log(`User response to the install prompt: ${outcome}`);
-      deferredPrompt = null;
-      hidePopup();
+    function populateCountries() {
+        africanCountries.forEach(country => {
+            const option = document.createElement('option');
+            option.value = country;
+            option.textContent = country;
+            countrySelector.appendChild(option);
+        });
     }
-  });
 
-  closeBtn.addEventListener('click', () => {
-    hidePopup();
-  });
+    function openModal(plan) {
+        orderForm.reset();
+        orderForm.style.display = 'block';
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+        const planInput = document.querySelector(`input[name="planName"][value="${plan}"]`);
+        if (planInput) {
+            planInput.checked = true;
+        }
+        orderModal.classList.remove('hidden');
+        setTimeout(() => orderModal.classList.add('show'), 10);
+        lucide.createIcons(); // Refresh icons inside modal
+    }
 
-  function hidePopup() {
-    installPopup.classList.remove('show');
-    setTimeout(() => installPopup.classList.add('hidden'), 400);
-  }
+    function closeModal() {
+        orderModal.classList.remove('show');
+        setTimeout(() => orderModal.classList.add('hidden'), 200);
+    }
+
+    document.querySelectorAll('.order-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const plan = btn.dataset.plan;
+            if (plan === 'Business') {
+                window.open('https://wa.me/237686430454?text=Bonjour, je suis intéressé par le forfait Business et j\'aimerais avoir plus d\'informations.', '_blank');
+            } else {
+                openModal(plan);
+            }
+        });
+    });
+
+    closeModalBtn.addEventListener('click', closeModal);
+
+    orderForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const formData = new FormData(orderForm);
+        const data = Object.fromEntries(formData.entries());
+        data.phoneNumber = iti.getNumber(); // Get the full number with country code
+
+        try {
+            await apiService.createOrder(data);
+            showSuccessAndRedirect(data);
+        } catch (error) {
+            console.error('Order creation failed:', error);
+            showError();
+        }
+    });
+
+    function setLoading(isLoading) {
+        if (isLoading) {
+            submitBtn.disabled = true;
+            submitBtnText.textContent = 'Validation...';
+            submitBtnLoader.classList.remove('hidden');
+        } else {
+            submitBtn.disabled = false;
+            submitBtnText.textContent = 'Valider et payer';
+            submitBtnLoader.classList.add('hidden');
+        }
+        lucide.createIcons();
+    }
+
+    function showSuccessAndRedirect(data) {
+        orderForm.style.display = 'none';
+        successMsg.style.display = 'block';
+        lucide.createIcons();
+
+        const message = `*Nouvelle Commande - Studya Creator*\n\n*Forfait:* ${data.planName}\n*Client:* ${data.firstName} ${data.lastName}\n*Email:* ${data.email}\n*Téléphone:* ${data.phoneNumber}\n*Pays:* ${data.country}`;
+        const whatsappUrl = `https://wa.me/237686430454?text=${encodeURIComponent(message)}`;
+
+        setTimeout(() => {
+            window.open(whatsappUrl, '_blank');
+            closeModal();
+            setLoading(false);
+        }, 2500);
+    }
+
+    function showError() {
+        orderForm.style.display = 'none';
+        errorMsg.style.display = 'block';
+        lucide.createIcons();
+        setLoading(false);
+        setTimeout(() => {
+             orderForm.style.display = 'block';
+             errorMsg.style.display = 'none';
+        }, 3000);
+    }
+
+    populateCountries();
+
+    iti = window.intlTelInput(phoneInput, {
+        initialCountry: "ci",
+        onlyCountries: ['dz', 'ao', 'bj', 'bw', 'bf', 'bi', 'cv', 'cm', 'cf', 'td', 'km', 'cg', 'cd', 'ci', 'dj', 'eg', 'gq', 'er', 'sz', 'et', 'ga', 'gm', 'gh', 'gn', 'gw', 'ke', 'ls', 'lr', 'ly', 'mg', 'mw', 'ml', 'mr', 'mu', 'ma', 'mz', 'na', 'ne', 'ng', 'rw', 'st', 'sn', 'sc', 'sl', 'so', 'za', 'ss', 'sd', 'tz', 'tg', 'tn', 'ug', 'zm', 'zw'],
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
 }
 
 // Dark Mode Toggle

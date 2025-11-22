@@ -1,5 +1,77 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* --- Order Modal --- */
+.plan-card-radio {
+    display: block;
+    cursor: pointer;
+}
+
+.plan-card-content {
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 0.75rem;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+}
+
+.plan-card-radio input:checked + .plan-card-content {
+    border-color: #8b5cf6;
+    background-color: #f5f3ff;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.dark-mode .plan-card-content {
+    border-color: #475569;
+}
+
+.dark-mode .plan-card-radio input:checked + .plan-card-content {
+    border-color: #a78bfa;
+    background-color: #3730a3;
+}
+
+.iti {
+    width: 100%;
+}
+
+.iti__country-list {
+    z-index: 60 !important; /* Ensure dropdown is above modal */
+}
+
+#order-modal-content {
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s;
+}
+
+#order-modal.show #order-modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.dark-mode #order-modal-content {
+    background-color: #1e293b;
+}
+
+.dark-mode #order-modal h3,
+.dark-mode #order-modal label {
+    color: #e2e8f0;
+}
+
+.dark-mode #order-modal input,
+.dark-mode #order-modal select {
+    background-color: #334155;
+    border-color: #475569;
+    color: #ffffff;
+}
+
+.dark-mode #order-modal #order-modal-close-btn:hover {
+    background-color: #334155;
+}
+
+.dark-mode #order-modal #order-modal-close-btn i {
+    color: #94a3b8;
+}
+
 /* --- PWA Install Popup --- */
 .dark-mode #pwa-install-popup .pwa-popup-content {
     background-color: #ffffff;
@@ -43,24 +115,8 @@ body, .bg-white, .bg-slate-50, .bg-slate-100, .bg-slate-200, .bg-slate-800, .bg-
     font-family: 'Inter', sans-serif;
 }
 
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/inter-v12-latin-regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/inter-v12-latin-700.woff2') format('woff2');
-}
-
-html {
-    scroll-behavior: smooth;
+body {
+    font-family: 'Inter', sans-serif;
 }
 
 @keyframes float {
